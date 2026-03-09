@@ -1,0 +1,49 @@
+<article class="card">
+  <header class="card-header">
+    <div class="card-meta">
+      <span class="tag country-tag">{{ article.country }}</span>
+      <span class="tag topic-tag">{{ article.topic }}</span>
+      <span
+        class="tag bias-tag"
+        [class.biased]="article.bias === 'biased'"
+        [class.unbiased]="article.bias === 'unbiased'"
+        [class.pending]="!article.analyzed"
+        [title]="article.bias_reasoning || ''"
+      >
+        @if (article.analyzed) {
+          {{ article.bias === 'biased' ? 'Biased' : 'Unbiased' }}
+        } @else {
+          Not analyzed
+        }
+      </span>
+    </div>
+
+    <h2 class="card-title">
+      <a [href]="article.url" target="_blank" rel="noopener">{{ article.title }}</a>
+    </h2>
+
+    <p class="card-byline">
+      @if (article.source) {
+        <span class="source">{{ article.source }}</span>
+      }
+      @if (article.published_at) {
+        <span class="published">{{ article.published_at }}</span>
+      }
+    </p>
+  </header>
+
+  <div class="card-body">
+    @if (article.summary) {
+      <p class="summary">{{ article.summary }}</p>
+    } @else if (article.description) {
+      <p class="description">{{ article.description }}</p>
+    }
+
+    @if (article.bias_reasoning) {
+      <details class="bias-details">
+        <summary>Bias reasoning</summary>
+        <p>{{ article.bias_reasoning }}</p>
+      </details>
+    }
+  </div>
+</article>

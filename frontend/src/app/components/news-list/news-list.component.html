@@ -1,0 +1,20 @@
+@if (loading) {
+  <div class="state-message">
+    <div class="spinner"></div>
+    <p>Fetching and analyzing articles…</p>
+  </div>
+} @else if (error) {
+  <div class="state-message error">
+    <p>{{ error }}</p>
+  </div>
+} @else if (articles.length === 0) {
+  <div class="state-message">
+    <p>No articles found. Select a country and topic above, or adjust your filters.</p>
+  </div>
+} @else {
+  <div class="grid">
+    @for (article of articles; track article.id) {
+      <app-news-card [article]="article" />
+    }
+  </div>
+}

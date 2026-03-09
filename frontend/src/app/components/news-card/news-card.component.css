@@ -1,0 +1,117 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.country-tag {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+.topic-tag {
+  background: #fce8e6;
+  color: #c5221f;
+}
+
+.bias-tag.biased {
+  background: var(--color-biased-bg);
+  color: var(--color-biased);
+}
+
+.bias-tag.unbiased {
+  background: var(--color-unbiased-bg);
+  color: var(--color-unbiased);
+}
+
+.bias-tag.pending {
+  background: var(--color-pending-bg);
+  color: var(--color-pending);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.card-title a {
+  color: var(--color-text);
+}
+
+.card-title a:hover {
+  color: var(--color-primary);
+}
+
+.card-byline {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  gap: 0.75rem;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summary {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.description {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.bias-details {
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.bias-details summary {
+  cursor: pointer;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.bias-details p {
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  background: var(--color-bg);
+  border-radius: 4px;
+  border-left: 3px solid var(--color-border);
+}

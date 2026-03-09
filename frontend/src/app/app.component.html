@@ -1,0 +1,72 @@
+<div class="layout">
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-title">
+        <h1>News Check</h1>
+        <p class="header-subtitle">Global news with AI-powered summaries and bias analysis</p>
+      </div>
+      <button class="btn btn-outline" (click)="refreshAll()" [disabled]="refreshing">
+        {{ refreshing ? 'Refreshing…' : 'Refresh all' }}
+      </button>
+    </div>
+  </header>
+
+  <div class="controls-bar">
+    <div class="controls-inner">
+      <div class="control-group">
+        <label for="country-select">Country</label>
+        <select
+          id="country-select"
+          [(ngModel)]="selectedCountry"
+          (ngModelChange)="loadNews()"
+        >
+          <option value="" disabled>Select country</option>
+          @for (country of countries; track country) {
+            <option [value]="country">{{ country }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="topic-select">Topic</label>
+        <select
+          id="topic-select"
+          [(ngModel)]="selectedTopic"
+          (ngModelChange)="loadNews()"
+        >
+          <option value="" disabled>Select topic</option>
+          @for (topic of topics; track topic) {
+            <option [value]="topic">{{ topic }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="bias-select">Bias filter</label>
+        <select
+          id="bias-select"
+          [(ngModel)]="selectedBias"
+          (ngModelChange)="onFilterChange()"
+        >
+          <option value="">All</option>
+          <option value="biased">Biased</option>
+          <option value="unbiased">Unbiased</option>
+        </select>
+      </div>
+
+      @if (articles.length > 0) {
+        <div class="result-count">
+          {{ filteredArticles.length }} of {{ articles.length }} articles
+        </div>
+      }
+    </div>
+  </div>
+
+  <main class="content">
+    <app-news-list
+      [articles]="filteredArticles"
+      [loading]="loading"
+      [error]="error"
+    />
+  </main>
+</div>
